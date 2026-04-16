@@ -1,0 +1,12 @@
+{
+  "name": "derisk",
+  "version": "0.1.0",
+  "description": "Validate assumptions in plans before execution: Socratic risk discovery, hypothesis testing, evidence-backed amendments",
+  "author": {
+    "name": "inferal-oss",
+    "email": "oss@inferal.com"
+  },
+  "repository": "https://github.com/inferal-oss/agentic-plugins",
+  "license": "MIT",
+  "keywords": ["derisking", "planning", "hypothesis-testing", "code-quality"]
+}

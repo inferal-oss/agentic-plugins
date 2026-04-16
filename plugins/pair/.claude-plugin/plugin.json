@@ -1,0 +1,12 @@
+{
+  "name": "pair",
+  "version": "0.1.0",
+  "description": "Decide who writes what: classify plan steps as AI-written or developer-written based on importance and complexity",
+  "author": {
+    "name": "inferal-oss",
+    "email": "oss@inferal.com"
+  },
+  "repository": "https://github.com/inferal-oss/agentic-plugins",
+  "license": "MIT",
+  "keywords": ["pair-programming", "authorship", "planning", "code-ownership"]
+}

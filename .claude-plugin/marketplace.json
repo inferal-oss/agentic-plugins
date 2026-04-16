@@ -1,0 +1,28 @@
+{
+  "name": "agentic-plugins",
+  "metadata": {
+    "description": "Open-source agentic coding plugins by Inferal"
+  },
+  "owner": {
+    "name": "inferal-oss",
+    "email": "oss@inferal.com"
+  },
+  "plugins": [
+    {
+      "name": "derisk",
+      "description": "Validate assumptions in plans before execution: Socratic risk discovery, hypothesis testing, evidence-backed amendments",
+      "source": "./plugins/derisk",
+      "version": "0.1.0",
+      "author": { "name": "inferal-oss" },
+      "keywords": ["derisking", "planning", "hypothesis-testing", "code-quality"]
+    },
+    {
+      "name": "pair",
+      "description": "Decide who writes what: classify plan steps as AI-written or developer-written based on importance and complexity",
+      "source": "./plugins/pair",
+      "version": "0.1.0",
+      "author": { "name": "inferal-oss" },
+      "keywords": ["pair-programming", "authorship", "planning", "code-ownership"]
+    }
+  ]
+}
