@@ -10,7 +10,7 @@ Validate assumptions in implementation plans before execution.
 
 ```bash
 # Claude Code
-claude /plugin install derisk@inferal-oss-agentic-plugins
+claude plugin install derisk@inferal-oss-agentic-plugins
 
 # Then use:
 /derisk:derisk path/to/plan.md
@@ -33,7 +33,7 @@ Decide who writes what in an implementation plan.
 
 ```bash
 # Claude Code
-claude /plugin install pair@inferal-oss-agentic-plugins
+claude plugin install pair@inferal-oss-agentic-plugins
 
 # Then use:
 /pair:pair path/to/plan.md
@@ -55,9 +55,9 @@ Custom involvement levels can be defined in `.inferal/derisk/config.md`.
 Add the marketplace, then install whichever plugins you want:
 
 ```bash
-claude /plugin marketplace add inferal-oss/agentic-plugins
-claude /plugin install derisk@inferal-oss-agentic-plugins
-claude /plugin install pair@inferal-oss-agentic-plugins
+claude plugin marketplace add inferal-oss/agentic-plugins
+claude plugin install derisk@inferal-oss-agentic-plugins
+claude plugin install pair@inferal-oss-agentic-plugins
 ```
 
 ### Codex CLI
