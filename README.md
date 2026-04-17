@@ -10,7 +10,7 @@ Validate assumptions in implementation plans before execution.
 
 ```bash
 # Claude Code
-claude plugin install derisk@inferal-oss-agentic-plugins
+claude plugin install derisk@agentic-plugins
 
 # Then use:
 /derisk:derisk path/to/plan.md
@@ -33,7 +33,7 @@ Decide who writes what in an implementation plan.
 
 ```bash
 # Claude Code
-claude plugin install pair@inferal-oss-agentic-plugins
+claude plugin install pair@agentic-plugins
 
 # Then use:
 /pair:pair path/to/plan.md
@@ -55,7 +55,7 @@ statement where "sounds right" isn't enough.
 
 ```bash
 # Claude Code
-claude plugin install verify@inferal-oss-agentic-plugins
+claude plugin install verify@agentic-plugins
 
 # Then use:
 /verify:verify "Stripe supports idempotency keys on POST in API version 2024-12"
@@ -82,9 +82,9 @@ Add the marketplace, then install whichever plugins you want:
 
 ```bash
 claude plugin marketplace add inferal-oss/agentic-plugins
-claude plugin install derisk@inferal-oss-agentic-plugins
-claude plugin install pair@inferal-oss-agentic-plugins
-claude plugin install verify@inferal-oss-agentic-plugins
+claude plugin install derisk@agentic-plugins
+claude plugin install pair@agentic-plugins
+claude plugin install verify@agentic-plugins
 ```
 
 ### Codex CLI
