@@ -230,23 +230,44 @@ negative control is stronger than a Tier A page. For each sub-assertion ask:
 - **Can I construct a negative control** that would pass only if the
   mechanism weren't in effect?
 
-If yes, build an experiment under `.inferal/verification/{slug}/experiments/{name}/`
-with the same contract as derisk:
+If yes, build an experiment under `.inferal/verification/{slug}/experiments/{name}/`.
 
-- `README.md` states hypothesis, method, expected output.
-- `run.{ext}` is self-contained and exits 0 on support-for-claim, non-zero
-  otherwise. Any language that fits.
-- The script captures the evidence itself (save JSON response, HTML, stdout)
-  under `evidence/` inside the experiment so re-verification has raw data.
+### Experiment contract
 
-Anti-patterns that disqualify an experiment (inherited from derisk):
+Every experiment MUST satisfy all of the following:
 
-| Anti-pattern | Problem |
-|--------------|---------|
-| Fixture self-verification | Test writes X, then checks X exists. Proves nothing external. |
-| Missing negative control | Only shows the feature exists, not that it's load-bearing. |
-| Claims vs proof | "Proves X" but the script just prints a literal. |
-| Magic-token gap | Identifier appears in both prompt and output; leakage, not detection. |
+- **`README.md`** states the hypothesis (what sub-assertion(s) it tests),
+  method (what the script does and against what), and expected output (what
+  the pass case looks like).
+- **`run.{ext}`** is self-contained and runnable with a single command
+  (e.g., `bash run.sh`, `uv run --script run.py`, `cargo run`, etc.). Any
+  language that fits. No reliance on state outside the experiment directory
+  beyond documented external services (e.g., a public API).
+- **Exit code is the verdict:** the script exits `0` iff the evidence
+  supports the sub-assertion(s); it exits non-zero with a clear reason when
+  the evidence refutes them. No ambiguous exits.
+- **Raw evidence is captured** into an `evidence/` subdirectory alongside
+  the script: API responses, HTML, stdout, HTTP status codes, computed
+  summaries. Re-verification must be able to inspect the raw data without
+  re-running the script, and can diff captures across runs.
+- **Include a negative control** whenever feasible: the same script also
+  probes a scenario where the mechanism should NOT be present, and confirms
+  the expected failure. A passing positive test plus a passing negative
+  control together rule out "the script always passes".
+
+### Disqualifying anti-patterns
+
+An experiment that exhibits any of the following is not evidence and must be
+fixed or discarded:
+
+| Anti-pattern | What it looks like | How to fix |
+|--------------|---------------------|------------|
+| **Fixture self-verification** | Script writes `X`, then checks that `X` exists. Proves only that the script's own setup ran. | Test must exercise something outside the script's own writes: an external API, an installed tool's behavior, a file created by a separate process. |
+| **Missing negative control** | Script shows the mechanism exists, but nothing demonstrates the result would differ if the mechanism weren't in effect. Classic failure mode for permission/auth/idempotency tests. | Add a companion probe that removes or inverts the mechanism and verifies the opposite outcome. |
+| **Claims vs proof** | `README.md` says "proves X" but the script just prints a literal or echoes an input. | The passing path must be caused by the mechanism under test, not by the script's own instructions. Use values that can only exist if the mechanism worked. |
+| **Magic-token gap** | Script probes "who did X" using an identifier that appears in both the prompt and the output; the output contains the token because the prompt put it there, not because the mechanism did. | Put the identifying string only where the mechanism would inject it; never in the input. Its appearance downstream is then the signal. |
+| **Redundancy** | Two experiments under the same claim test the same thing with different wording. | Merge or delete one. Every experiment must prove something distinct. |
+| **Missing isolation** | Result changes depending on the caller's environment, installed plugins, or ambient auth state. | Pin or strip the environment (`env -i`, explicit `--config`, `--setting-sources ""`, no-plugin mode). Document what is isolated and why. |
 
 When empirical verification is impossible (historical claims, intent,
 future-tense claims, private systems): state why, and lean on Tier A/B
