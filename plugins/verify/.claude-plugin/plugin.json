@@ -1,0 +1,12 @@
+{
+  "name": "verify",
+  "version": "0.1.0",
+  "description": "Establish an evidence chain for claims: Socratic decomposition, tiered source credibility, empirical tests when possible, and re-runnable verification packages",
+  "author": {
+    "name": "inferal-oss",
+    "email": "oss@inferal.com"
+  },
+  "repository": "https://github.com/inferal-oss/agentic-plugins",
+  "license": "MIT",
+  "keywords": ["verification", "evidence", "fact-checking", "sources", "socratic"]
+}

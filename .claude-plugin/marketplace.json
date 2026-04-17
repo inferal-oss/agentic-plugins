@@ -23,6 +23,14 @@
       "version": "0.1.0",
       "author": { "name": "inferal-oss" },
       "keywords": ["pair-programming", "authorship", "planning", "code-ownership"]
+    },
+    {
+      "name": "verify",
+      "description": "Establish an evidence chain for claims: Socratic decomposition, tiered source credibility, empirical tests when possible, re-runnable packages",
+      "source": "./plugins/verify",
+      "version": "0.1.0",
+      "author": { "name": "inferal-oss" },
+      "keywords": ["verification", "evidence", "fact-checking", "sources", "socratic"]
     }
   ]
 }

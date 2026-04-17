@@ -18,6 +18,9 @@ Codex discovers skills via `~/.agents/skills/` symlinks.
 
    # pair plugin
    ln -s ~/.agentic-plugins/plugins/pair/skills ~/.agents/skills/pair
+
+   # verify plugin
+   ln -s ~/.agentic-plugins/plugins/verify/skills ~/.agents/skills/verify
    ```
 
 3. Restart Codex to discover the skills.
@@ -27,6 +30,7 @@ Codex discovers skills via `~/.agents/skills/` symlinks.
 ```bash
 ls -la ~/.agents/skills/derisk  # Should show: derisk/SKILL.md
 ls -la ~/.agents/skills/pair    # Should show: pair/SKILL.md
+ls -la ~/.agents/skills/verify  # Should show: verify/SKILL.md
 ```
 
 ## Updating
@@ -42,6 +46,7 @@ Skills update instantly through the symlinks.
 ```bash
 rm ~/.agents/skills/derisk
 rm ~/.agents/skills/pair
+rm ~/.agents/skills/verify
 ```
 
 Optionally delete the clone: `rm -rf ~/.agentic-plugins`
